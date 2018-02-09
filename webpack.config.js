@@ -19,6 +19,7 @@ module.exports = {
     // path: './dist', 
     filename: 'index_bundle.js'
   },
+  devtool: '#source-map',
   module: {
     rules: [
       {
@@ -35,13 +36,24 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader'],
         })
-
-      }]
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
+      }
+    ]
   },
   resolve: {
     modules: [
