@@ -1,0 +1,69 @@
+/*
+ * Colors
+ * ========================================================================== */
+/*
+  * Typography
+  * ========================================================================== */
+/*
+  * Layout
+  * ========================================================================== */
+/*
+ * Base styles
+ * ========================================================================== */
+html {
+  color: #222;
+  font-weight: 100;
+  font-size: 1em;
+  /* ~16px; */
+  font-family: "Segoe UI", "HelveticaNeue-Light", sans-serif;
+  line-height: 1.375;
+  /* ~22px */ }
+
+.container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: 1000px; }
+.row-bordered:after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #ccc;
+  margin: 0 15px; }
+
+.mt20 {
+  margin-top: 20px; }
+
+.card-img-top {
+  border-radius: 1px solid black !important; }
+
+.add-border {
+  border: 1px solid black; }
+
+.employee-card {
+  cursor: pointer; }
+  .employee-card a {
+    color: #000 !important; }
+  .employee-card .row {
+    padding: 0;
+    margin: 0; }
+  .employee-card .thick-border {
+    border: 2px solid #c0c0c0; }
+  .employee-card .card {
+    margin-top: 2px;
+    margin-bottom: 2px; }
+  .employee-card .card-block {
+    padding: 0; }
+    .employee-card .card-block .card-title {
+      padding: 4px;
+      margin-bottom: 4px; }
+    .employee-card .card-block .card-text {
+      padding: 4px; }
+
+#flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto; }
+  #flex-container .flex-item:last-child {
+    border: 1px solid #c0c0c0;
+    margin-top: 3px; }
