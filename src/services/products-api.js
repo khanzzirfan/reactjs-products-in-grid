@@ -13,7 +13,7 @@ export function getProducts(queryParams) {
     }
 
     if(_.includes(['size', 'id', 'price'], queryParams.sortBy)){
-        Url = Url + `_size=${queryParams.sortBy}`;
+        Url = Url + `_sort=${queryParams.sortBy}`;
     }
 
     return httpGet(Url)

@@ -1,5 +1,14 @@
 import * as api from 'src/services/products-api';
 
+export function sortby_selection(sortyBy){
+    return dispatch => {
+        dispatch({
+            type: 'SORT_BY_SELECTION_CHANGED',
+            sortBy: sortyBy
+        });
+    }
+}
+
 export function Submit_GetProducts(queryParams) {
     return dispatch => {
         dispatch({

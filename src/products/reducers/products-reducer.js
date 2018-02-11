@@ -48,6 +48,19 @@ const ProductsReducer = (state = initialState, action) => {
                 isError: true,
                 data: []
             }
+        case 'SORT_BY_SELECTION_CHANGED':
+            /* if sort not one of the below options return current state */
+            if (!(_.includes(['id', 'size', 'price'], action.sortBy))) {
+                return state;
+            }
+            else
+                return {
+                    ...state,
+                    sortBy: action.sortBy,
+                    page: 0,
+                    hasMore: true,
+                    data: []
+                }
         default:
             return state
     }

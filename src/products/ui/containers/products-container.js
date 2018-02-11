@@ -9,6 +9,7 @@ import ProductComponent from 'src/products/ui/components/product-component';
 import ErrorComponent from 'src/common/error-component';
 import LoadingComponent from 'src/common/loading-component';
 import ProductSortComponent from 'src/products/ui/components/product-sort-component';
+import EndOfDataComponent from 'src/common/end-of-data-component.js';
 
 class ProductsContainer extends Component {
 
@@ -24,6 +25,19 @@ class ProductsContainer extends Component {
 
     componentWillMount(){
         window.removeEventListener('scroll', this.handleBottomScroll);
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.products && this.props.products.sortBy !== nextProps.products.sortBy){
+            debugger;
+            //likely sortBy has changed;
+            let queryParams = {
+                page: nextProps.products.page + 1,
+                sortBy: nextProps.products.sortBy,
+                limit: nextProps.products.limit
+            }
+            this.props.productActions.fetchProductsData(queryParams);
+        }
     }
 
     handleBottomScroll (e) {
@@ -51,12 +65,12 @@ class ProductsContainer extends Component {
         this.props.productActions.fetchProductsData(queryParams);
     }
 
-    onLoadMore = () => {
-        this.handleFetchProducts();
+    handleOnSortClick = (sortBy) => {
+        this.props.productActions.sortby_selection(sortBy);
     }
 
     render() {
-        const { isLoading, isError, data, hasMore } = this.props.products;
+        const { isLoading, isError, data, hasMore, sortBy } = this.props.products;
         return (
             <div className="row">
                 {
@@ -66,7 +80,7 @@ class ProductsContainer extends Component {
                     !!(isError) && <ErrorComponent />
                 }
                 {
-                    !!(data && data.length > 0) && <ProductSortComponent />
+                    !!(data && data.length > 0) && <ProductSortComponent onSortClick = {this.handleOnSortClick} currentSort={sortBy}/>
                 }
                 {
                     !!(data && data.length > 0) && data.map(function (prod, index) {
@@ -78,9 +92,10 @@ class ProductsContainer extends Component {
                 {
                     !!(isLoading && hasMore && data.length > 0) && <LoadingComponent />
                 }
-                <div className="btn-group">
-                    <button type="button" className="btn btn-primary" onClick={this.onLoadMore}> Load more </button>
-                </div>
+                {
+                    /**When data loading finished and has no more data to laod show end of data */
+                    !!(isLoading==false && hasMore==false) && <EndOfDataComponent />
+                }
             </div>
         );
     }
@@ -99,7 +114,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         productActions: bindActionCreators(ProductActions, dispatch)
-        //companyInfoActions: bindActionCreators(CompanyInfoActions, dispatch),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

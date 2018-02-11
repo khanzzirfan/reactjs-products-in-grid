@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import SortButtonComponent from 'src/products/ui/components/sort-button-component';
 
 class ProductSortComponent extends Component {
+
+    handleOnSortClick = (sortOption) => {
+        if (this.props.onSortClick)
+            this.props.onSortClick(sortOption);
+    }
+
     render() {
+        const {currentSort}= this.props;
         return (
             <div className="col-lg-12 col-md-12 col-sm-12 mt-2 mb-2">
                 <div className="row">
@@ -11,9 +19,9 @@ class ProductSortComponent extends Component {
                     </div>
                     <div className="col-md-8 col-sm-10 blocks">
                         <div className="btn-group btn-group-lg" role="group" aria-label="Basic example">
-                            <button type="button" className="btn btn-info ">Size</button>
-                            <button type="button" className="btn btn-info">Price</button>
-                            <button type="button" className="btn btn-info">Id</button>
+                            <SortButtonComponent onSortClick={this.handleOnSortClick} sortOption="Size" currentSort={currentSort}/>
+                            <SortButtonComponent onSortClick={this.handleOnSortClick} sortOption="Price" currentSort={currentSort}/>
+                            <SortButtonComponent onSortClick={this.handleOnSortClick} sortOption="Id" currentSort={currentSort}/>
                         </div>
                     </div>
                 </div>
@@ -23,7 +31,8 @@ class ProductSortComponent extends Component {
 }
 
 ProductSortComponent.propTypes = {
-
+    onSortClick: PropTypes.func,
+    currentSort: PropTypes.string
 };
 
 export default ProductSortComponent;
