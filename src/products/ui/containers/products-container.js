@@ -8,6 +8,7 @@ import * as  ProductActions from 'src/products/actions/product-actions';
 import ProductComponent from 'src/products/ui/components/product-component';
 import ErrorComponent from 'src/common/error-component';
 import LoadingComponent from 'src/common/loading-component';
+import ProductSortComponent from 'src/products/ui/components/product-sort-component';
 
 class ProductsContainer extends Component {
 
@@ -24,6 +25,9 @@ class ProductsContainer extends Component {
                 }
                 {
                     !!(isError) && <ErrorComponent />
+                }
+                {
+                    !!(data && data.length > 0) && <ProductSortComponent />
                 }
                 {
                     !!(data && data.length > 0) && data.map(function (prod, index) {
