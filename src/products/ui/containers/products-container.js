@@ -12,16 +12,55 @@ import ProductSortComponent from 'src/products/ui/components/product-sort-compon
 
 class ProductsContainer extends Component {
 
+    constructor(props) {
+        super(props);
+        this.handleBottomScroll = this.handleBottomScroll.bind(this);
+    }
+
     componentDidMount() {
-        this.props.productActions.fetchProductsData();
+        window.addEventListener('scroll', this.handleBottomScroll);
+        this.handleFetchProducts();
+    }
+
+    componentWillMount(){
+        window.removeEventListener('scroll', this.handleBottomScroll);
+    }
+
+    handleBottomScroll (e) {
+
+        e.preventDefault();
+        const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight || window.innerHeight;
+        const reachedBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+        const {hasMore} = this.props.products;
+        console.log('At the bottom');
+        if(reachedBottom && hasMore){
+            this.handleFetchProducts();
+        }
+    }
+
+    handleFetchProducts = () => {
+        var { page, sortBy, limit } = this.props.products;
+        let nextPage = page + 1;
+        let queryParams = {
+            page: nextPage,
+            sortBy: sortBy,
+            limit: limit
+        }
+        this.props.productActions.fetchProductsData(queryParams);
+    }
+
+    onLoadMore = () => {
+        this.handleFetchProducts();
     }
 
     render() {
-        const { isLoading, isError, data } = this.props.products;
+        const { isLoading, isError, data, hasMore } = this.props.products;
         return (
             <div className="row">
                 {
-                    !!(isLoading) && <LoadingComponent />
+                    !!(isLoading && data.length <= 0) && <LoadingComponent />
                 }
                 {
                     !!(isError) && <ErrorComponent />
@@ -36,6 +75,12 @@ class ProductsContainer extends Component {
                         )
                     })
                 }
+                {
+                    !!(isLoading && hasMore && data.length > 0) && <LoadingComponent />
+                }
+                <div className="btn-group">
+                    <button type="button" className="btn btn-primary" onClick={this.onLoadMore}> Load more </button>
+                </div>
             </div>
         );
     }

@@ -1,7 +1,22 @@
+import _ from 'lodash';
 
 /** dummy mock api call to fetch data*/
-export function getProducts() {
-    return httpGet('http://localhost:3000/products')
+export function getProducts(queryParams) {
+    let Url = 'http://localhost:3000/products?';
+
+    if(_.isFinite(queryParams.page)){
+        Url = Url + `_page=${queryParams.page}&`;
+    }
+
+    if(_.isFinite(queryParams.limit)){
+        Url = Url + `_limit=${queryParams.limit}&`;
+    }
+
+    if(_.includes(['size', 'id', 'price'], queryParams.sortBy)){
+        Url = Url + `_size=${queryParams.sortBy}`;
+    }
+
+    return httpGet(Url)
         .then(function (response) {
             return JSON.parse(response);
         }).catch(error => {
