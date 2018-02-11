@@ -1,4 +1,5 @@
 import * as api from 'src/services/products-api';
+import _ from 'lodash';
 
 export function sortby_selection(sortyBy){
     return dispatch => {
@@ -38,7 +39,7 @@ export function Error_GettingProducts(error) {
     }
 }
 
-export function fetchProductsData(queryParams) {
+function fetchProductsDataAPI(queryParams) {
     return dispatch => {
         dispatch(Submit_GetProducts(queryParams));
         return api.getProducts(queryParams).then(response => {
@@ -49,3 +50,14 @@ export function fetchProductsData(queryParams) {
             });
     }
 }
+
+function memoizedFetchProductsData(queryParams){
+    return fetchProductsDataAPI(queryParams);
+}
+
+//Cache results for next time use;
+var memoizedGetProducts = _.memoize(memoizedFetchProductsData, function(queryParams){
+    return JSON.stringify(`${queryParams.page}+${queryParams.sortBy}`);
+});
+
+export {memoizedGetProducts as fetchProductsData};

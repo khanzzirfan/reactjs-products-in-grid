@@ -22,7 +22,6 @@ const ProductsReducer = (state = initialState, action) => {
                 limit: action.params.limit
             }
         case 'FINISH_GET_PRODUCTS':
-            debugger;
             let moreProducts;
             if (_.isEmpty(state.data)) {
                 moreProducts = action.data;
@@ -53,6 +52,8 @@ const ProductsReducer = (state = initialState, action) => {
             if (!(_.includes(['id', 'size', 'price'], action.sortBy))) {
                 return state;
             }
+            else if (state.sortBy === action.sortBy)
+                return state;
             else
                 return {
                     ...state,
