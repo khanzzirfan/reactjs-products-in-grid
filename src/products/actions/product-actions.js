@@ -10,7 +10,7 @@ export function sortby_selection(sortyBy){
     }
 }
 
-export function Submit_GetProducts(queryParams) {
+function Submit_GetProducts(queryParams) {
     return dispatch => {
         dispatch({
             type: 'SUBMIT_GET_PRODUCTS',
@@ -20,7 +20,7 @@ export function Submit_GetProducts(queryParams) {
 }
 
 
-export function Finish_GetProducts(queryParams, data) {
+function Finish_GetProducts(queryParams, data) {
     return dispatch => {
         dispatch({
             type: 'FINISH_GET_PRODUCTS',
@@ -30,7 +30,7 @@ export function Finish_GetProducts(queryParams, data) {
     }
 }
 
-export function Error_GettingProducts(error) {
+function Error_GettingProducts(error) {
     return dispatch => {
         dispatch({
             type: 'ERROR_GET_PRODUCTS',
@@ -39,7 +39,7 @@ export function Error_GettingProducts(error) {
     }
 }
 
-function fetchProductsDataAPI(queryParams) {
+export function fetchProductsDataAPI(queryParams) {
     return dispatch => {
         dispatch(Submit_GetProducts(queryParams));
         return api.getProducts(queryParams).then(response => {
@@ -57,7 +57,7 @@ function memoizedFetchProductsData(queryParams){
 
 //Cache results for next time use;
 var memoizedGetProducts = _.memoize(memoizedFetchProductsData, function(queryParams){
-    return JSON.stringify(`${queryParams.page}+${queryParams.sortBy}`);
+    return JSON.stringify(`page${queryParams.page}sortBy${queryParams.sortBy}`);
 });
 
 export {memoizedGetProducts as fetchProductsData};

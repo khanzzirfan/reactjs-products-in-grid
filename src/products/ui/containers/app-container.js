@@ -7,7 +7,7 @@ import * as  ProductActions from 'src/products/actions/product-actions';
 import ProductSortComponent from 'src/products/ui/components/product-sort-component';
 import AppHeaderComponent from 'src/common/app-header-component';
 
-class ProductSortContainer extends Component {
+class AppContainer extends Component {
     constructor(props) {
         super(props);
     }
@@ -27,7 +27,7 @@ class ProductSortContainer extends Component {
     }
 }
 
-ProductSortContainer.propTypes = {
+AppContainer.propTypes = {
     sortBy: PropTypes.string
 };
 
@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
         productActions: bindActionCreators(ProductActions, dispatch)
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ProductSortContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
