@@ -17,3 +17,17 @@ html {
   padding: 0 0 40px;
   max-width: $max-content-width;
 }
+
+
+/* Small devices (tablets, 768px and up) */
+@media screen and (min-width: 200px) {
+  .main-content{
+    padding-top: 250px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .main-content{
+    padding-top: 95px;
+  }
+}
