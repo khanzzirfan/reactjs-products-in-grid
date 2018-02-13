@@ -15,7 +15,7 @@ export function getCustomisedRelativeDate(dateString) {
 
     let dateObject = new Date(Date.parse(dateString));
     let timeDiff = getTimeDiff(dateObject);
-
+    
     let numberValue = timeDiff.replace(/[^\d]+/g, '');
     if (timeDiff.includes("day") && numberValue > 7) {
         return dateObject.toLocaleDateString("en-NZ");

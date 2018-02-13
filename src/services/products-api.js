@@ -24,14 +24,6 @@ export function getProducts(queryParams) {
         });
 }
 
-
-
-
-
-
-
-
-
 function httpGet(url) {
     return new Promise(function (resolve, reject) {
         const xhr = new XMLHttpRequest();
