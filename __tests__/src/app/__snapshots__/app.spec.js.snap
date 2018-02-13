@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app test component should match to snapshot 1`] = `
+<div>
+  <nav
+    className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+  >
+    <Connect(AppContainer) />
+  </nav>
+  <div
+    className="container main-content"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/about"
+      />
+    </Switch>
+  </div>
+</div>
+`;

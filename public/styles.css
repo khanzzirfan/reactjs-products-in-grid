@@ -9005,17 +9005,6 @@ html {
 @media screen and (min-width: 500px) {
   .main-content {
     padding-top: 95px; } }
-.face {
-  height: 120px;
-  text-align: center;
-  border: 1px solid #c0c0c0; }
-
-.blocks .btn-group .btn-info {
-  margin-right: 2px;
-  border-radius: 0; }
-
-.no-padding {
-  padding: 0 !important; }
 .error-template {
   padding: 40px 15px;
   text-align: center; }
@@ -9068,3 +9057,14 @@ html {
     transform: scale(1, 2.2); }
   40% {
     transform: scale(1); } }
+.face {
+  height: 120px;
+  text-align: center;
+  border: 1px solid #c0c0c0; }
+
+.blocks .btn-group .btn-info {
+  margin-right: 2px;
+  border-radius: 0; }
+
+.no-padding {
+  padding: 0 !important; }

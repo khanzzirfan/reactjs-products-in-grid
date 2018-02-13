@@ -5,7 +5,7 @@ class AppHeaderComponent extends Component {
     render() {
         return (
                 <div className="col-md-12 col-lg-12">
-                    <h3 className="text-center">{`Creatella  `}
+                    <h3 className="text-center">Creatella 
                         <small>
                             Products grid
                 </small>

@@ -14,8 +14,8 @@ class ErrorComponent extends Component {
                             Sorry, an error has occured, Requested data not found!
                         </div>
                         <div className="error-actions">
-                            <a href="http://www.jquery2dotnet.com" className="btn btn-primary btn-lg"><span className="glyphicon glyphicon-home"></span>
-                                Take Me Home </a><a href="http://www.jquery2dotnet.com" className="btn btn-default btn-lg"><span className="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                            <a href="javascript:void(0)" className="btn btn-primary btn-lg"><span className="glyphicon glyphicon-home"></span>
+                                Take Me Home </a><a href="javascript:void(0)" className="btn btn-default btn-lg"><span className="glyphicon glyphicon-envelope"></span> Contact Support </a>
                         </div>
                     </div>
                 </div>

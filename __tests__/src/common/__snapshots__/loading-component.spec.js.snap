@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loading component test component should match to snapshot 1`] = `
+<div
+  className="col-md-12 text-center"
+>
+  <div
+    className="d-flex flex-column justify-content-center"
+  >
+    <div
+      className="p-2"
+    >
+      <div
+        className="loading"
+      >
+        <div
+          className="loading-bar"
+        />
+        <div
+          className="loading-bar"
+        />
+        <div
+          className="loading-bar"
+        />
+        <div
+          className="loading-bar"
+        />
+      </div>
+    </div>
+    <div
+      className="p-2"
+    >
+       
+    </div>
+    <div
+      className="p-2"
+    >
+       
+    </div>
+    <div
+      className="p-2"
+    >
+       Loading....
+    </div>
+  </div>
+</div>
+`;
