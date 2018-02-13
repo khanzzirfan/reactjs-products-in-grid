@@ -1,3 +1,29 @@
+Hello Reviewer
+====
+
+### To run this application follow steps on the root folder
+- run npm install
+- run webpack -d 
+- npm run start . Open up browser with localhost:3000. 
+
+### This applications has redux store and follows container and components architechtural approach.
+
+### Below are the features implemented in this application
+ - Showing products faces in the grid
+ - Showing product dates with relative date formats (days ago, minutes ago, etc).
+ - Showing prices in dollar format fixed to 2 decimal  places
+ - Showing product faces with it size fetched from the data.
+ - Implemented sorting by sort type "id", "price", "size" has been implemented
+ - Implemented on scoll to bottom to load more products.
+ - Showing advertisement after every 20 products. I did good effort for the site not to be lagggy. 
+ - OnIdleTime -> not implemented. But I could have implemented by having a flag in the redux store. if none of the events happend in the store for a 'x' no of time, then could fetch data in background for the next available page. 
+ - Implemented End of Catlouge text when all the products are loaded.
+ - There is animated loading when fetching the products
+ - Written Unit tests to cover only actions/reducers/components. Not the API service. Couldn't find a way to mock a promise request. Something is wrong in my machine settings, jest mocks not recognising promise requests or I have not properly setup package.json file with jest mock config settings. 
+ - Also Implemented lodash memoize with a key, to fetch the data from the cache, when available. 
+
+
+
 Products Grid
 ====
 
