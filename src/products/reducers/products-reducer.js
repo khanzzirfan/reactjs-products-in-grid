@@ -7,7 +7,7 @@ const initialState = {
     hasMore: true,
     page: 0,
     limit: 15,
-    data: []
+    data: {}
 };
 
 const ProductsReducer = (state = initialState, action) => {
@@ -22,13 +22,9 @@ const ProductsReducer = (state = initialState, action) => {
                 limit: action.params.limit
             }
         case 'FINISH_GET_PRODUCTS':
-            let moreProducts;
-            if (_.isEmpty(state.data)) {
-                moreProducts = action.data;
-            }
-            else {
-                moreProducts = state.data.concat(action.data);
-            }
+            let moreProducts = {};
+            let pageNumber = action.params.page;
+            moreProducts[pageNumber] = action.data;
 
             return {
                 ...state,
@@ -37,15 +33,15 @@ const ProductsReducer = (state = initialState, action) => {
                 page: action.params.page,
                 sortBy: action.params.sortBy,
                 limit: action.params.limit,
-                hasMore: !(state.data.length > 0 && action.data.length < 14),
-                data: moreProducts
+                hasMore: !(Object.keys(state.data).length > 0 && action.data.length < 14),
+                data: Object.assign(state.data, moreProducts)
             }
         case 'ERROR_GET_PRODUCTS':
             return {
                 ...state,
                 isLoading: false,
                 isError: true,
-                data: []
+                data: {}
             }
         case 'SORT_BY_SELECTION_CHANGED':
             /* if sort not one of the below options return current state */
@@ -60,7 +56,7 @@ const ProductsReducer = (state = initialState, action) => {
                     sortBy: action.sortBy,
                     page: 0,
                     hasMore: true,
-                    data: []
+                    data: {}
                 }
         default:
             return state

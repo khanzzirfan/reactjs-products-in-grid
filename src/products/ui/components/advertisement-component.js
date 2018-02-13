@@ -6,9 +6,7 @@ class AdvertisementComponent extends Component {
         const { adsId } = this.props;
         return (
             <div className="col-md-12 col-sm-12 text-center">
-                
-                    <img id={adsId} src={`/ads/?r=${adsId}`} className="rounded" alt={`/ads/?r=${adsId}`} />
-                
+                <img id={adsId} src={`/ads/?r=${adsId}`} className="rounded" alt={`/ads/?r=${adsId}`} />
             </div>
         );
     }

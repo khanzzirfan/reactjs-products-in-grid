@@ -44,7 +44,7 @@ class ProductsContainer extends Component {
         }
     }
 
-    handleBottomScroll = _.debounce(function(e){
+    handleBottomScroll = _.debounce(function (e) {
 
         e.preventDefault();
         const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
@@ -55,11 +55,11 @@ class ProductsContainer extends Component {
         console.log('At the bottom');
         if (reachedBottom && hasMore) {
             //debounce to send call only for few seconds;
-             this.handleFetchProducts();
+            this.handleFetchProducts();
         }
-    }, 350);
+    }, 300);
 
- 
+
     handleFetchProducts = () => {
         var { page, sortBy, limit } = this.props.products;
         let nextPage = page + 1;
@@ -71,58 +71,52 @@ class ProductsContainer extends Component {
         this.props.productActions.fetchProductsData(queryParams);
     }
 
-    getRandomAdsId() {
+    generateAdsId() {
         let adRange = 10;
         var newAdId = 0;
-        var isAdIdAvailable = true;
-        while (isAdIdAvailable) {
+        newAdId = Math.floor(Math.random(new Date().getTime()) * adRange);
+        while(this.advertisementIds.length > 0 && newAdId === this.advertisementIds[this.advertisementIds.length - 1]){
             newAdId = Math.floor(Math.random(new Date().getTime()) * adRange);
-            if (this.advertisementIds.length == 0) {
-                this.advertisementIds.push(newAdId);
-                isAdIdAvailable = false;
-            }
-            else {
-                var lastId = this.advertisementIds[this.advertisementIds.length -1];
-                if (newAdId !== lastId) {
-                    this.advertisementIds.push(newAdId);
-                    isAdIdAvailable = false;
-                }
-            }
         }
         return newAdId;
-    }
-
-    /**A unique for the keys in the list*/
-    generateKey = (pre) => {
-        return `${ pre }_${ new Date().getTime() }`;
     }
 
     render() {
         const { isLoading, isError, data, hasMore, sortBy } = this.props.products;
         let productComponent = [];
-        var adsCount = 0;
+        let productsArray = [];
+        var counter = 0;
         var that = this;
-        if (data && data.length > 0) {
-            data.forEach(function (prod, index) {
-                productComponent.push(<ProductComponent key={that.generateKey(prod.id)} product={prod} />);
-                // if ((index + 1) % 20 === 0) {
-                //     let adsId = that.getRandomAdsId();
-                //     productComponent.push(<AdvertisementComponent key={index} adsId={adsId} />);
-                // }
+
+        Object.keys(data).forEach(function (key) {
+            productsArray = productsArray.concat(data[key]);
+        });
+
+        if (productsArray && productsArray.length > 0) {
+            productsArray.forEach(function (prod, index) {
+                productComponent.push(<ProductComponent key={prod.id} product={prod} />);
+                if ((index + 1) % 20 === 0) {
+                    let advertisementId = that.advertisementIds[counter++];
+                    if(advertisementId ===undefined){
+                        advertisementId = that.generateAdsId();
+                        that.advertisementIds.push(advertisementId);
+                    }
+                    productComponent.push(<AdvertisementComponent key={index} adsId={advertisementId} />);
+                }
             });
         }
 
         return (
             <div className="row">
                 {
-                    !!(isLoading && data.length <= 0) && <LoadingComponent />
+                    !!(isLoading && productComponent.length <= 0) && <LoadingComponent />
                 }
                 {
                     !!(isError) && <ErrorComponent />
                 }
                 {productComponent}
                 {
-                    !!(isLoading && hasMore && data.length > 0) && <LoadingComponent />
+                    !!(isLoading && hasMore && productComponent.length > 0) && <LoadingComponent />
                 }
                 {
                     /**When data loading finished and has no more data to laod show end of data */

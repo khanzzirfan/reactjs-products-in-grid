@@ -37,16 +37,15 @@ exports[`Product Component test  should render component with correct props 1`] 
       <p
         className="card-text"
       >
-        price: $
-        149
+        price: 
+        $149.00
          
       </p>
       <p
         className="card-text"
       >
         date: 
-        Sat Feb 10 2018 17:23:46 GMT+1300 (New Zealand Daylight Time)
-         
+        3 days ago
       </p>
     </div>
   </div>
@@ -90,16 +89,15 @@ exports[`Product Component test component should match to snapshot 1`] = `
       <p
         className="card-text"
       >
-        price: $
-        149
+        price: 
+        $149.00
          
       </p>
       <p
         className="card-text"
       >
         date: 
-        Sat Feb 10 2018 17:23:46 GMT+1300 (New Zealand Daylight Time)
-         
+        3 days ago
       </p>
     </div>
   </div>
