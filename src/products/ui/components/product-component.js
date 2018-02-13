@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import s from 'src/products/products.scss';
 
 class ProductComponent extends Component {
     render() {
@@ -8,7 +7,7 @@ class ProductComponent extends Component {
         return (
             <div className="col-lg-3 col-md-3 col-sm-6 portfolio-item">
                 <div className="card h-100">
-                    <div className="face" style={{ fontSize: product.size + 'px' }}>
+                    <div className={"face"} id="product-face" style={{ fontSize: product.size + 'px' }}>
                         {product.face}
                     </div>
                     <div className="card-body">

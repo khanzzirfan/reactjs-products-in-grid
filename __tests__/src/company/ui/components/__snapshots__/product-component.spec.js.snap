@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Component test  should render component with correct props 1`] = `
+<div
+  className="col-lg-3 col-md-3 col-sm-6 portfolio-item"
+>
+  <div
+    className="card h-100"
+  >
+    <div
+      className="face"
+      id="product-face"
+      style={
+        Object {
+          "fontSize": "35px",
+        }
+      }
+    >
+      (⊙ω⊙)
+    </div>
+    <div
+      className="card-body"
+    >
+      <p
+        className="card-text"
+      >
+        id: 
+        37622-2oagdixqdw3mcf20wudlwyiudi
+         
+      </p>
+      <p
+        className="card-text"
+      >
+         size: 
+        35
+      </p>
+      <p
+        className="card-text"
+      >
+        price: $
+        149
+         
+      </p>
+      <p
+        className="card-text"
+      >
+        date: 
+        Sat Feb 10 2018 17:23:46 GMT+1300 (New Zealand Daylight Time)
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Product Component test component should match to snapshot 1`] = `
+<div
+  className="col-lg-3 col-md-3 col-sm-6 portfolio-item"
+>
+  <div
+    className="card h-100"
+  >
+    <div
+      className="face"
+      id="product-face"
+      style={
+        Object {
+          "fontSize": "35px",
+        }
+      }
+    >
+      (⊙ω⊙)
+    </div>
+    <div
+      className="card-body"
+    >
+      <p
+        className="card-text"
+      >
+        id: 
+        37622-2oagdixqdw3mcf20wudlwyiudi
+         
+      </p>
+      <p
+        className="card-text"
+      >
+         size: 
+        35
+      </p>
+      <p
+        className="card-text"
+      >
+        price: $
+        149
+         
+      </p>
+      <p
+        className="card-text"
+      >
+        date: 
+        Sat Feb 10 2018 17:23:46 GMT+1300 (New Zealand Daylight Time)
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sort Button Component test component should match to snapshot 1`] = `
+<div
+  className="col-lg-12 col-md-12 col-sm-12 mt-2 mb-2"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-4 col-sm-2 text-md-right text-center"
+    >
+      <h3
+        className=""
+        id="sort-label"
+      >
+        Sort
+      </h3>
+    </div>
+    <div
+      className="col-md-8 col-sm-10 blocks"
+    >
+      <div
+        aria-label="Basic example"
+        className="btn-group btn-group-lg"
+        role="group"
+      >
+        <SortButtonComponent
+          currentSort="size"
+          onSortClick={[Function]}
+          sortOption="Size"
+        />
+        <SortButtonComponent
+          currentSort="size"
+          onSortClick={[Function]}
+          sortOption="Price"
+        />
+        <SortButtonComponent
+          currentSort="size"
+          onSortClick={[Function]}
+          sortOption="Id"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

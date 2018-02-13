@@ -12,6 +12,7 @@ import ProductSortComponent from 'src/products/ui/components/product-sort-compon
 import EndOfDataComponent from 'src/common/end-of-data-component.js';
 import { getRandomInRange } from 'src/utils/app-utils';
 import AdvertisementComponent from 'src/products/ui/components/advertisement-component';
+import s from 'src/products/products.scss';
 
 class ProductsContainer extends Component {
 

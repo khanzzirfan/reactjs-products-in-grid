@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advertisement Component test should render the component with correct image source url props 1`] = `
+<div
+  className="col-md-12 col-sm-12 text-center"
+>
+  <img
+    alt="/ads/?r=10"
+    className="rounded"
+    id={10}
+    src="/ads/?r=10"
+  />
+</div>
+`;
+
+exports[`Advertisement Component test should render the component with given props 1`] = `
+<div
+  className="col-md-12 col-sm-12 text-center"
+>
+  <img
+    alt="/ads/?r=10"
+    className="rounded"
+    id={10}
+    src="/ads/?r=10"
+  />
+</div>
+`;

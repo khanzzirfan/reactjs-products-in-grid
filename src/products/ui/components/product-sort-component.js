@@ -15,7 +15,7 @@ class ProductSortComponent extends Component {
             <div className="col-lg-12 col-md-12 col-sm-12 mt-2 mb-2">
                 <div className="row">
                     <div className="col-md-4 col-sm-2 text-md-right text-center">
-                        <h3 className="">Sort</h3>
+                        <h3 className="" id="sort-label">Sort</h3>
                     </div>
                     <div className="col-md-8 col-sm-10 blocks">
                         <div className="btn-group btn-group-lg" role="group" aria-label="Basic example">
