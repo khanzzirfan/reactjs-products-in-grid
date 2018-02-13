@@ -52,4 +52,16 @@ describe("Sort Button Component test", () => {
     it(" buttons are places inside a class btn group large", () => {
         expect(wrapper.find('.btn-group .btn-group-lg').exists()).toBeTruthy();
     });
+
+    it(" should call handleOnClick function with child component props with right sort option", () => {
+        wrapper = mount(<ProductSortComponent {...stubDataProps} />);
+
+        wrapper.find(SortButtonComponent).first().simulate('click');
+        expect(_mockFunc).toHaveBeenCalledWith('size');
+        
+        wrapper.find(SortButtonComponent).last().simulate('click');
+        expect(_mockFunc).toHaveBeenCalledWith('id');
+        
+    });
+
 });
